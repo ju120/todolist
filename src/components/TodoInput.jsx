@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Container, Button } from "react-bootstrap";
 
 const TodoInput = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState("");
@@ -7,7 +8,9 @@ const TodoInput = ({ addTodo }) => {
     setNewTodo(e.target.value);
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e) => {
+    e.preventDefault();
+
     if (newTodo.trim() !== "") {
       addTodo(newTodo);
       setNewTodo("");
@@ -15,12 +18,16 @@ const TodoInput = ({ addTodo }) => {
   };
 
   return (
-    <div>
-      <input type="text" value={newTodo} onChange={handleInputChange} placeholder="Add:" />
-      <button id="add-btn" onClick={handleAddTodo}>
-        Add
-      </button>
-    </div>
+    <Container>
+      <Form onSubmit={handleAddTodo}>
+        <Form.Group controlId="todoInput" className="d-flex justify-content-center align-items-center">
+          <Form.Control type="text" value={newTodo} onChange={handleInputChange} placeholder="Add:" style={{ width: "350px" }} />
+          <Button variant="primary" type="submit">
+            Add
+          </Button>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 };
 

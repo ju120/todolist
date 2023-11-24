@@ -7,9 +7,8 @@ const TodoItem = ({ todo, toggleTodo, deleteTodo }) => {
         <input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
         {todo.text}
       </label>
-      <button id="del-btn" onClick={() => deleteTodo(todo.id)}>
-        Delete
-      </button>
+
+      <i onClick={() => deleteTodo(todo.id)} className="fas fa-trash-alt fa-lg"></i>
     </li>
   );
 };
