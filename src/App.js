@@ -14,10 +14,6 @@ const App = () => {
     setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
 
-  const deleteTodo = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  };
-
   return (
     <div className="App">
       <h2 style={{ color: "whitesmoke", padding: "1em" }}>MY TASKS</h2>
