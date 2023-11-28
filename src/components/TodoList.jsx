@@ -1,15 +1,19 @@
 import React from "react";
-import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
+const TodoList = ({ displayedTasks, toggleTodo, deleteTodo, colors }) => {
   return (
-    <form>
-      <ul>
-        {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-        ))}
-      </ul>
-    </form>
+    <ul className="list-group">
+      {displayedTasks.map((todo, index) => (
+        <li key={todo.id} className={`list-group-item`} style={{ display: "flex", color: "whitesmoke", backgroundColor: colors[index % colors.length] }}>
+          <label className="form-check">
+            <input type="checkbox" className="form-check-input" checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
+            {todo.text}
+          </label>
+          <i onClick={() => deleteTodo(todo.id)} className="fas fa-trash-alt fa-lg ml-2"></i>
+        </li>
+      ))}
+    </ul>
   );
 };
+
 export default TodoList;

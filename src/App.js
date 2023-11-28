@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TodoInput from "./components/TodoInput";
-import TodoList from "./components/TodoList";
 import "./index.css";
-import FilterTodo from "./components/FilterTodo";
+import TodoFilter from "./components/TodoFilter";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -21,10 +20,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>My tasks</h1>
-      <FilterTodo todos={todos} setTodos={setTodos} />
+      <h2 style={{ color: "whitesmoke", padding: "1em" }}>MY TASKS</h2>
+
       <TodoInput addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoFilter todos={todos} setTodos={setTodos} toggleTodo={toggleTodo} />
     </div>
   );
 };
